@@ -32,6 +32,7 @@ print(" :: Data type : " , df['sl_no'].dtype)
 
 
 # Label encoding conversion of categorical data to numerical data : We have the convert the string or object data into numericals only
+#  It is used because many ML algo are better at performing numerical calculations, and it also saves the memory and reduce redundancy
 print(" :: Encoding using Label Encoding (Cat codes)")
 df['gender'] = df['gender'].astype("category")                                  # This will convert the all the values of gender as a category internally and return it
 print(":: Data type of gender Changed (to category) ", df.dtypes['gender'])          
@@ -51,6 +52,10 @@ df['gender'] = le.fit_transform(df['gender'])                                   
 
 
 # Normalization using min max scaling : X_normalized = (X - X.min())/(X.max() - X.min())
+# Normalization is the proccess of scaling up and scaling down the values into perticular common range
+# for min-max scaling normalization we will scale value in range of 0 and 1 . That will be easier to compare the values
+# for the model to compare the values and ML models will do effient way as we have small value or perticular range of values
+# Consider the example of height of student in various format, in different dataset
 print("Normalization using a Min-Max method :")
 df['salary'] = (df['salary'] - df['salary'].min())/(df['salary'].max() - df['salary'].min())
 print(df.head().T)                                                              # To transform
